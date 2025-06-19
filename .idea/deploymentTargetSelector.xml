@@ -5,13 +5,10 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="TipCalculatorUITests">
+      <SelectionState runConfigName="MainActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="verifyTipCalculationInUI()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="verifyTipPercentageChange()">
+      <SelectionState runConfigName="increasePeopleCount()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

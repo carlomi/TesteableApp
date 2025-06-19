@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 
@@ -53,7 +54,9 @@ fun TipCalculatorScreen() {
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number
             ),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .testTag("billInput")
         )
 
         Text("Porcentaje de propina: $tipPercentage%")
@@ -62,7 +65,9 @@ fun TipCalculatorScreen() {
             onValueChange = { tipPercentage = it.toInt() },
             valueRange = 0f..50f,
             steps = 49,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .testTag("tipSlider")
         )
 
         Text("Número de personas: $numberOfPeople")
@@ -75,7 +80,10 @@ fun TipCalculatorScreen() {
                 Text("-")
             }
             Text(text = numberOfPeople.toString())
-            Button(onClick = { numberOfPeople++ }) {
+            Button(
+                onClick = { numberOfPeople++ },
+                Modifier.testTag("AddPersonButton"))
+            {
                 Text("+")
             }
         }
@@ -86,7 +94,8 @@ fun TipCalculatorScreen() {
         ) {
             Checkbox(
                 checked = roundUp,
-                onCheckedChange = { roundUp = it }
+                onCheckedChange = { roundUp = it },
+                modifier = Modifier.testTag("roundCheckbox")
             )
             Text("Redondear propina", modifier = Modifier.padding(start = 8.dp))
         }
@@ -95,11 +104,13 @@ fun TipCalculatorScreen() {
 
         Text(
             text = "Propina: $${"%.2f".format(tip)}",
-            style = MaterialTheme.typography.headlineSmall
+            style = MaterialTheme.typography.headlineSmall,
+            modifier = Modifier.testTag("tipAmount")
         )
         Text(
             text = "Total por persona: $${"%.2f".format(totalPerPerson)}",
-            style = MaterialTheme.typography.headlineSmall
+            style = MaterialTheme.typography.headlineSmall,
+            modifier = Modifier.testTag("totalPerPerson")
         )
     }
 }

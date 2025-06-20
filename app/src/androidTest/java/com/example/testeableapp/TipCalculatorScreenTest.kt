@@ -43,14 +43,14 @@ class TipCalculatorScreenTest {
 
         composeTestRule.onNodeWithTag("billInput").performTextInput("100")
 
-        // Mover slider a 20%
-        composeTestRule.onNodeWithTag("tipSlider").performSemanticsAction(SemanticsActions.SetProgress) { it(0.20f) }
+        // Mover slider a 50%
+        composeTestRule.onNodeWithTag("tipSlider").performSemanticsAction(SemanticsActions.SetProgress) { it(50.0f) }
 
 
         // Puede variar según precisión del swipe → aceptable verificar existencia parcial
         composeTestRule
             .onNodeWithTag("tipAmount")
-            .assertTextContains("20")
+            .assertTextEquals("Propina: $50.00")
     }
 
     @Test
@@ -66,7 +66,7 @@ class TipCalculatorScreenTest {
         composeTestRule.onNodeWithTag("totalPerPerson").assertIsDisplayed()
     }
 
-    // Pruebbas de UI adicionales
+    // Pruebas de UI adicionales
 
     // Test para verificar que el monto por persona se calcula correctamente al aumentar el número de personas
     @Test

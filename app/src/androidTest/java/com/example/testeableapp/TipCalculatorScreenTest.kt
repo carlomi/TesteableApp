@@ -79,7 +79,7 @@ class TipCalculatorScreenTest {
 
         // Validar total por persona inicial
         composeTestRule.onNodeWithTag("totalPerPerson")
-            .assertTextEquals("Total por persona: \$115.00")
+            .assertTextEquals("Total por persona: $115.00")
 
         // Presionar botón "+" para aumentar número de personas
         composeTestRule.onNodeWithTag("AddPersonButton").performClick()
@@ -89,25 +89,19 @@ class TipCalculatorScreenTest {
             .assertTextEquals("Total por persona: $57.50")
     }
 
-
-    // Test para verificar que la propina se actualiza al seleccionar redondeo
+    // Test para asegurarnos que cuando no hay datos en el campo de monto, la propina y total por persona son $0.00
     @Test
-    fun roundUpCheckbox() {
+    fun emptyBill() {
         composeTestRule.setContent {
             TipCalculatorScreen()
         }
 
-        composeTestRule.onNodeWithTag("billInput").performTextInput("101")
-
-        // Captura valor inicial sin redondeo (120 * 15% = 18)
+        // Verificamos que la propina sea $0.00
         composeTestRule.onNodeWithTag("tipAmount")
-            .assertTextEquals("Propina: \$15.15")
+            .assertTextEquals("Propina: \$0.00")
 
-        // Activar redondeo
-        composeTestRule.onNodeWithTag("roundCheckbox").performClick()
-
-        // Ahora debe redondearse hacia arriba (18.0 → 18.0, pero útil si fuera 18.3)
-        composeTestRule.onNodeWithTag("tipAmount")
-            .assertTextEquals("Propina: \$16.00") // Asegura que la propina se actualizó
+        // También el total por persona debe ser $0.00
+        composeTestRule.onNodeWithTag("totalPerPerson")
+            .assertTextEquals("Total por persona: \$0.00")
     }
 }

@@ -79,14 +79,14 @@ class TipCalculatorScreenTest {
 
         // Validar total por persona inicial
         composeTestRule.onNodeWithTag("totalPerPerson")
-            .assertTextContains("100.00")
+            .assertTextEquals("Total por persona: \$115.00")
 
         // Presionar botón "+" para aumentar número de personas
         composeTestRule.onNodeWithTag("AddPersonButton").performClick()
 
         // Validar que el total por persona disminuye al dividir entre más personas
         composeTestRule.onNodeWithTag("totalPerPerson")
-            .assertTextEquals("50.00")
+            .assertTextEquals("Total por persona: $57.50")
     }
 
 

@@ -82,7 +82,7 @@ fun TipCalculatorScreen() {
             Text(text = numberOfPeople.toString())
             Button(
                 onClick = { numberOfPeople++ },
-                Modifier.testTag("AddPersonButton"))
+                modifier = Modifier.testTag("AddPersonButton"))
             {
                 Text("+")
             }

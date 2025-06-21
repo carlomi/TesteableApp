@@ -47,7 +47,7 @@ class TipCalculatorScreenTest {
         composeTestRule.onNodeWithTag("tipSlider").performSemanticsAction(SemanticsActions.SetProgress) { it(50.0f) }
 
 
-        // Puede variar según precisión del swipe → aceptable verificar existencia parcial
+        // En este caso usamos 50% como ejemplo
         composeTestRule
             .onNodeWithTag("tipAmount")
             .assertTextEquals("Propina: $50.00")
